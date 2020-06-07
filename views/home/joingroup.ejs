@@ -1,0 +1,39 @@
+<%- include("../partials/header", {loggedIn: true, avatar, username, post: null}) %>
+<br>
+<div class = "container">
+	<div class="card">
+		<div class="card-body">
+			<form action="/groups/joingroup" method="GET">
+				<h3>Search For a Group</h3>
+				<br>
+				<div class="form-group">
+			  		<div class="input-group mb-3">
+						<input type="text" class="form-control" name="query" placeholder="Search For A Group">
+						<div class="input-group-append">
+							<button class="btn btn-primary" name="groupsearch">Search</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<div class="card-deck">
+		<% if(results) { %>
+		<% results.forEach(function(result){ %>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title"><%= result.title %></h5>
+					<p><%= result.description %></p>
+					
+					<form action="/groups/joingroup" method="POST">
+						<input type="hidden" name="groupId" value="<%= result._id %>">
+						<button  class="btn btn-primary">Join</button>
+					</form>
+				</div>
+			</div>
+		<% }); %>
+		<% } %>
+	</div>
+</div>
+<%- include("../partials/footer") %>

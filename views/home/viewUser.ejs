@@ -1,0 +1,54 @@
+<%- include("../partials/header", {loggedIn: true, avatar, username, post: null}) %>
+    <style>
+        div.b {
+            position: absolute;
+            left: -10px;
+        }
+
+        div.a {
+            position: absolute;
+            right: -20px;
+        }
+
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <br>
+
+
+        <div class="container">
+			<h2>
+				<%= searchedUser.username %>
+			</h2>
+            <% userFeed.forEach(row => { %>
+                <div class="row justify-content-around mt-4">
+                    <% row.forEach(card => { %>
+                        <div class="card border" style="width: <%= card.width - 5 %>rem;">
+                            <% if(card.img){ %>
+                                <img class="card-img-top" src="/<%=card.post.images[0]%>">
+                                <% } %>
+                                    <div class="card-body">
+                                        <a href="/posts/post/<%= card.post._id %>">
+                                            <h5 class="card-title">
+                                                <%= card.post.title %>
+                                            </h5>
+                                        </a>
+                                        <p class="card-text">
+                                            <%= card.post.content %>
+                                        </p>
+                                    </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <% }) %>
+        </div>
+        <br>
+        <br>
+        <br>
+
+    
+
+    <%- include("../partials/footer") %>

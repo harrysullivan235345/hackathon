@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>The Social Media</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-			9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/">The social media</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts/posts">My Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts/feed">Feed</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+
+                <% if(!loggedIn) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signUp">Sign Up</a>
+                    </li>
+                    <% } else { %>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							  Create
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							  <a class="dropdown-item" href="/posts/createpost">Post</a>
+							  <a class="dropdown-item" href="/groups/creategroup">Group</a>
+							</div>
+					  </li>
+                        <li class="nav-item dropdown">                            
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <% if(avatar) { %>
+                                    <img class="avatar" src="/<%=avatar%>">
+									<%= username %>
+                                <% } %>
+                            </a>
+							
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="/users/logout">Logout</a>
+                            </div>
+                        </li>
+                    <% } %>
+
+            </ul>
+        </div>
+    </nav>

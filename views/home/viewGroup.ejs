@@ -1,0 +1,73 @@
+<%- include("../partials/header", {loggedIn: true, avatar, username, post: null}) %>
+    <style>
+        div.b {
+            position: absolute;
+            left: -10px;
+        }
+
+        div.a {
+            position: absolute;
+            right: -20px;
+        }
+
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <br>
+    <div class="">
+        <div class="card col-md-2 b">
+            <div class="card-body">
+                <h5 class="card-title">Add to the Group</h5>
+                <a href="/posts/createpost?group=<%= group._id %>" class="card-link">Create a Post in this Group</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="card col-md-2 a">
+            <div class="card-body">
+                <h3 class="card-title">Group Members</h3>
+				<% users.forEach(user => { %>
+					<a href="/users/user/<%= user._id %>" class="card-link"><p class="mb-1">
+						<%= user.username %>
+						</p></a>
+				<% }) %>
+            </div>
+        </div>
+    </div>
+
+<div class=" center">
+        <div class="container">
+            <% feed.forEach(row => { %>
+                <div class="row justify-content-around mt-4">
+                    <% row.forEach(card => { %>
+                        <div class="card border" style="width: <%= card.width - 5 %>rem;">
+                            <% if(card.img){ %>
+                                <img class="card-img-top" src="/<%=card.post.images[0]%>">
+                                <% } %>
+                                    <div class="card-body">
+                                        <a href="/posts/post/<%= card.post._id %>">
+                                            <h5 class="card-title">
+                                                <%= card.post.title %>
+                                            </h5>
+                                        </a>
+                                        <p class="card-text">
+                                            <%= card.post.content %>
+                                        </p>
+                                    </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <% }) %>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    
+
+    <%- include("../partials/footer") %>

@@ -1,0 +1,18 @@
+<%- include("../partials/header", {loggedIn: true, avatar, username, post: null}) %>
+
+<form action="/groups/creategroup" method="POST">
+	<div class="container mt-5 text-center">
+		<h1>Create a Group</h1>
+		<br>
+		<div class="col-md-7 mx-auto">
+			<input type="text" name="title" class="form-control" placeholder="Group Name">
+			<br>
+			<textarea class="form-control" name="description" placeholder="Group Description"></textarea>
+		</div>
+		<br>
+		<button class="btn btn-success btn-lg col-2">Create Group</button>
+	</div>
+	
+</form>
+
+<%- include("../partials/footer") %>

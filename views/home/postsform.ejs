@@ -1,0 +1,31 @@
+<%- include("../partials/header", {loggedIn: true, avatar, username, post: null}) %>
+<form action="/posts/createpost" method="POST" enctype="multipart/form-data">
+	<div class="container mt-5 text-center">
+		<h1>Create a Post</h1>
+		<br>
+		<div class="col-md-7 mx-auto">
+		<input type="text" placeholder="Title" name="title" class="form-control">
+	</div>
+	<br>
+	<div class="col-md-7 mx-auto">
+		<textarea class="form-control" name="content" placeholder="Description"></textarea>
+	</div>
+	<br>
+	<div class="col-md-7 mx-auto">
+		<div class="input-group mb-3">
+	  <div class="custom-file">
+		<input type="file" class="custom-file-input" name="images" aria-describedby="inputGroupFileAddon01" multiple>
+		<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+	  </div>
+	</div>
+	</div>
+	<br>
+	<% if(groupId) { %>
+	<input type="hidden" name="groupId" value="<%= groupId %>">
+	<% } %>
+	<button class = "btn btn-success btn-lg col-3">Submit Post</button>
+	</div>
+	
+</form>
+
+<%- include("../partials/footer") %>
